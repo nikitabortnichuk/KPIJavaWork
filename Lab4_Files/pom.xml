@@ -12,7 +12,6 @@
     <artifactId>Lab4_Files</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>file-readers</module>
         <module>FileStats</module>
         <module>FileReaders</module>
     </modules>
