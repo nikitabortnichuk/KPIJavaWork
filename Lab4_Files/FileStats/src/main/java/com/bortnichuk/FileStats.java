@@ -8,7 +8,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
-import java.util.function.Function;
 import java.util.stream.Stream;
 
 import static java.util.function.Function.identity;
@@ -27,8 +26,6 @@ public class FileStats {
         Path path = getPath(fileName);
         characterLongMap = getAllCharacterCount(path);
     }
-
-    public FileStats(){};
 
 
     /**

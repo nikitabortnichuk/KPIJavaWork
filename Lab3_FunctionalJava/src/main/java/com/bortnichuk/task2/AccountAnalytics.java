@@ -7,9 +7,7 @@ import com.bortnichuk.task2.model.Sex;
 import java.math.BigDecimal;
 import java.time.Month;
 import java.util.*;
-import java.util.function.Function;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.*;
@@ -71,7 +69,7 @@ public class AccountAnalytics {
     public Map<String, List<Account>> groupAccountsByEmailDomain() {
         return accounts.stream()
                 .collect(groupingBy(account -> account.getEmail()
-                        .substring(account.getEmail().indexOf("@") + 1)));
+                        .substring(account.getEmail().indexOf('@') + 1)));
     }
 
     /**

@@ -35,6 +35,10 @@ public class Window implements IWindow {
         return left + top + right + bottom;
     }
 
+    public int getPublicLength(){
+        return getLength();
+    }
+
 
     @Override
     public int getLeft() {

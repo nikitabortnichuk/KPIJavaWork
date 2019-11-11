@@ -1,6 +1,5 @@
 package com.bortnichuk;
 import java.util.stream.Stream;
-import java.util.Objects;
 
 /**
  * {@link LinkedList} is a list implementation that is based on singly linked generic nodes. A node is implemented as

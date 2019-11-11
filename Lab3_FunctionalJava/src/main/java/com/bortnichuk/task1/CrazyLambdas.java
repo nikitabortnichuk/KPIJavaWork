@@ -6,6 +6,10 @@ import java.util.function.*;
 
 public class CrazyLambdas {
 
+    private CrazyLambdas(){
+
+    }
+
     /**
      * Returns {@link Supplier} that always supply "Hello"
      *

@@ -1,8 +1,13 @@
 package com.bortnichuk.variant1;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+
 public class QuadraticEquationImpl implements QuadraticEquation {
 
-    public double[] getResult(double a, double b, double c) throws Exception {
+    private static Logger logger = LogManager.getLogger(QuadraticEquationImpl.class);
+
+    public double[] getResult(double a, double b, double c){
 
         double[] results;
 
@@ -10,7 +15,7 @@ public class QuadraticEquationImpl implements QuadraticEquation {
 
 
         if(a == 0){
-            throw new Exception("Equation is not quadratic");
+            throw new IllegalArgumentException("Equation is not quadratic");
         }
 
         if(discriminant > 0){
@@ -18,18 +23,18 @@ public class QuadraticEquationImpl implements QuadraticEquation {
             double discriminantRoot = Math.sqrt(discriminant);
             results[0] = (-b + discriminantRoot) / (2 * a);
             results[1] = (-b - discriminantRoot) / (2 * a);
-            System.out.println("Equation solved. " +
+            logger.trace("Equation solved. " +
                     "Result: x1 = " + results[0] + ", " + "x2 = " + results[1]);
         }
         else if(discriminant == 0){
             results = new double[1];
             results[0] = -b / (2 * a);
-            System.out.println("Equation solved. " +
+            logger.trace("Equation solved. " +
                     "Result: x = " + results[0]);
         }
         else {
             results = new double[]{};
-            System.out.println("There is no solutions! Discriminant is lower than 0!");
+            logger.trace("There is no solutions! Discriminant is lower than 0!");
         }
 
         return results;

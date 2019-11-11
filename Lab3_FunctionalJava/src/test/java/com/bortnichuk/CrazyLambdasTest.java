@@ -144,13 +144,11 @@ public class CrazyLambdasTest {
     }
 
     @Test
-    public void testNewThreadRunnableConsumer() throws InterruptedException {
+    public void testNewThreadRunnableConsumer() {
         Consumer<Runnable> newThreadRunnableConsumer = CrazyLambdas.newThreadRunnableConsumer();
 
         Queue<Integer> concurrentLinkedQueue = new ConcurrentLinkedQueue<>();
         newThreadRunnableConsumer.accept(() -> concurrentLinkedQueue.add(50));
-
-        Thread.sleep(500); // don't do that in real code
 
         assertEquals(1, concurrentLinkedQueue.size());
         assertEquals(50, concurrentLinkedQueue.element().intValue());
