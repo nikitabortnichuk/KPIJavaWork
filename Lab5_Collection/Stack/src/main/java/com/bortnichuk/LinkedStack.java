@@ -18,7 +18,6 @@ public class LinkedStack<T> implements Stack<T> {
         first = node;
 
         size++;
-
     }
 
     @Override

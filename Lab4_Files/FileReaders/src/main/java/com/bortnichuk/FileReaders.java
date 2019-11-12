@@ -1,5 +1,6 @@
 package com.bortnichuk;
 
+import java.io.Closeable;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -29,6 +30,8 @@ public class FileReaders {
         } catch (IOException e) {
             throw new FileStatsException("Cannot read file");
         }
+
+        Closeable
 
     }
 
