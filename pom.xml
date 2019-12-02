@@ -14,6 +14,7 @@
         <module>Lab3_FunctionalJava</module>
         <module>Lab4_Files</module>
         <module>Lab5_Collection</module>
+        <module>Lab8_Patterns</module>
     </modules>
 
     <properties>
