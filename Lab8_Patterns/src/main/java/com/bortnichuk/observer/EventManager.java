@@ -20,18 +20,18 @@ public class EventManager {
     }
 
     public void subscribe(String event, Visitor visitor){
-        List<Visitor> visitors = this.visitors.get(event);
-        visitors.add(visitor);
+        List<Visitor> subscribedVisitors = this.visitors.get(event);
+        subscribedVisitors.add(visitor);
     }
 
     public void unsubscribe(String event, Visitor visitor){
-        List<Visitor> visitors = this.visitors.get(event);
-        visitors.remove(visitor);
+        List<Visitor> unsubscribedVisitors = this.visitors.get(event);
+        unsubscribedVisitors.remove(visitor);
     }
 
     public void send(String event){
-        List<Visitor> visitors = this.visitors.get(event);
-        for (Visitor visitor: visitors) {
+        List<Visitor> eventVisitors = this.visitors.get(event);
+        for (Visitor visitor: eventVisitors) {
             visitor.update(event);
         }
     }

@@ -12,7 +12,7 @@ public class ObserverTest {
 
         Editor editor = getEditor();
 
-        int subscribers = editor.events.getVisitors().get("discounts").size();
+        int subscribers = editor.getEvents().getVisitors().get("discounts").size();
 
         assertEquals(2, subscribers);
     }
@@ -23,15 +23,18 @@ public class ObserverTest {
 
         editor.addNewDishToMenu();
         editor.makeDiscounts();
+        EmailNotificationVisitor visitor = (EmailNotificationVisitor) editor.getEvents().getVisitors().get("discounts").get(0);
+        String actualMessage = visitor.getMessage("discounts");
+        assertEquals("BIG DISCOUNTS!!!", actualMessage);
     }
 
 
     private Editor getEditor(){
         Editor editor = new Editor();
-        editor.events.subscribe("new dish", new EmailNotificationVisitor("nikita@kpi.ua"));
-        editor.events.subscribe("discounts", new EmailNotificationVisitor("nikita@kpi.ua"));
-        editor.events.subscribe("new dish", new EmailNotificationVisitor("mandarinka@gmail.com"));
-        editor.events.subscribe("discounts", new EmailNotificationVisitor("mandarinka@gmail.com"));
+        editor.getEvents().subscribe("new dish", new EmailNotificationVisitor("nikita@kpi.ua"));
+        editor.getEvents().subscribe("discounts", new EmailNotificationVisitor("nikita@kpi.ua"));
+        editor.getEvents().subscribe("new dish", new EmailNotificationVisitor("mandarinka@gmail.com"));
+        editor.getEvents().subscribe("discounts", new EmailNotificationVisitor("mandarinka@gmail.com"));
 
         return editor;
     }

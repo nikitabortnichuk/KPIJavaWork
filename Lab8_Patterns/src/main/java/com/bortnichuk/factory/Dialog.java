@@ -1,12 +1,12 @@
 package com.bortnichuk.factory;
 
-public abstract class Dialog {
+public interface Dialog {
 
-    public void render(){
+    default void render(){
         Menu menu = createMenu();
         menu.show();
     }
 
-    public abstract Menu createMenu();
+    Menu createMenu();
 
 }

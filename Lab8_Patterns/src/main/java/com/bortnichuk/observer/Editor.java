@@ -2,17 +2,21 @@ package com.bortnichuk.observer;
 
 public class Editor {
 
-    public EventManager events;
+    private EventManager events;
 
-    public Editor(){
+    Editor(){
         this.events = new EventManager("new dish", "discounts");
     }
 
-    public void makeDiscounts(){
+    void makeDiscounts(){
         events.send("discounts");
     }
 
-    public void addNewDishToMenu(){
+    void addNewDishToMenu(){
         events.send("new dish");
+    }
+
+    public EventManager getEvents() {
+        return events;
     }
 }

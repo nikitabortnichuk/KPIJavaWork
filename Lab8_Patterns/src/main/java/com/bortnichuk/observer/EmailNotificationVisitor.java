@@ -1,17 +1,21 @@
 package com.bortnichuk.observer;
 
+import org.apache.log4j.Logger;
+
 public class EmailNotificationVisitor implements Visitor {
+
+    private Logger logger = Logger.getLogger(this.getClass());
 
     private String email;
 
-    public EmailNotificationVisitor(String email) {
+    EmailNotificationVisitor(String email) {
         this.email = email;
     }
 
     @Override
     public void update(String eventType) {
 
-        System.out.println("Email to " + email + ": In our Burger Pub " + getMessage(eventType));
+        logger.trace("Email to " + email + ": In our Burger Pub " + getMessage(eventType));
     }
 
     public String getMessage(String eventType){
