@@ -5,7 +5,6 @@ import com.bortnichuk.entity.IWindow;
 import com.bortnichuk.entity.MyInvocationHandler;
 import com.bortnichuk.entity.TextWindow;
 import com.bortnichuk.entity.Window;
-import jdk.jshell.spi.ExecutionControl;
 import lombok.SneakyThrows;
 import org.junit.Test;
 
@@ -35,12 +34,19 @@ public class WindowTest {
     }
 
     @Test
+    public void getLength(){
+        Window windowImpl = createWindow();
+
+        assertEquals(16, windowImpl.getPublicLength());
+    }
+
+    @Test
     public void shouldCallTextWindowClass() {
         TextWindow textWindow = new TextWindow();
 
-        String expected = textWindow.getClass().getSimpleName();
+        String actual = textWindow.getClass().getSimpleName();
 
-        assertEquals(expected, "TextWindow");
+        assertEquals("TextWindow", actual );
     }
 
     @Test
@@ -53,6 +59,11 @@ public class WindowTest {
                         " " + method.getName() +
                         "(" + getParameters(method) + ")")
                 .forEach(System.out::println);
+
+        int actual = windowImpl.getClass().getDeclaredMethods().length;
+
+        assertEquals(17, actual);
+
     }
 
     @Test
@@ -61,7 +72,7 @@ public class WindowTest {
 
         String superClass = textWindow.getClass().getSuperclass().getSimpleName();
 
-        assertEquals(superClass, "Window");
+        assertEquals("Window", superClass);
     }
 
     @Test
@@ -74,6 +85,7 @@ public class WindowTest {
                 new MyInvocationHandler(window));
 
         String color = windowProxy.getColor();
+        System.out.println(color);
 
         assertThrows(SecurityException.class, () -> windowProxy.setColor("blue"));
     }

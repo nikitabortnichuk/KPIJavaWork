@@ -45,6 +45,8 @@ public class FileStatsTest {
     @Test
     public void testCreateFileStatsFromExistingFile() {
         FileStats fileStats = FileStats.from("sotl.txt");
+        boolean result = fileStats.containsCharacter('a');
+        assertTrue(result);
     }
 
     @Test(expected = FileStatsException.class)

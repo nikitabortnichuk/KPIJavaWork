@@ -9,11 +9,15 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Objects;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * {@link FileReaders} privides an API that allow to read whole file into a {@link String} by file name.
  */
 public class FileReaders {
+
+    private FileReaders() {
+    }
 
     /**
      * Returns a {@link String} that contains whole text from the file specified by name.
@@ -24,8 +28,8 @@ public class FileReaders {
     public static String readWholeFile(String fileName) {
         Path path = getPath(fileName);
 
-        try {
-            return Files.lines(path)
+        try (Stream<String> lines = Files.lines(path)) {
+            return lines
                     .collect(Collectors.joining("\n"));
         } catch (IOException e) {
             throw new FileStatsException("Cannot read file");
@@ -35,7 +39,7 @@ public class FileReaders {
 
     }
 
-    private static Path getPath(String filePath){
+    private static Path getPath(String filePath) {
         URL url = FileReaders.class.getClassLoader().getResource(filePath);
         Objects.requireNonNull(url);
 

@@ -14,7 +14,7 @@ public class ExamImplTest {
 
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         List<Question> questionsFirst = new ArrayList<>();
         List<Question> questionsSecond = new ArrayList<>();
         List<Question> questionsThird = new ArrayList<>();

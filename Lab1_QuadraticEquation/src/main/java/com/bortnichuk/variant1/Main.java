@@ -11,7 +11,7 @@ public class Main {
         try {
             quadraticEquation.getResult(a, b, c);
         } catch (Exception e) {
-            e.printStackTrace();
+            throw new IllegalArgumentException();
         }
     }
 }
