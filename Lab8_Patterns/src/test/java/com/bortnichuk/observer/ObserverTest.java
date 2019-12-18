@@ -8,7 +8,7 @@ public class ObserverTest {
 
 
     @Test
-    public void checkSubscribersAdded(){
+    public void checkSubscribersDiscountsAdded(){
 
         Editor editor = getEditor();
 
@@ -18,7 +18,20 @@ public class ObserverTest {
     }
 
     @Test
-    public void checkMessages(){
+    public void checkSubscribersNewDishRemoved(){
+
+        Editor editor = getEditor();
+        Visitor visitor = editor.getEvents().getVisitors().get("new dish").get(0);
+
+        editor.getEvents().unsubscribe("new dish", visitor);
+
+        int subscribers = editor.getEvents().getVisitors().get("new dish").size();
+
+        assertEquals(1, subscribers);
+    }
+
+    @Test
+    public void checkMessages() {
         Editor editor = getEditor();
 
         editor.addNewDishToMenu();
@@ -27,7 +40,6 @@ public class ObserverTest {
         String actualMessage = visitor.getMessage("discounts");
         assertEquals("BIG DISCOUNTS!!!", actualMessage);
     }
-
 
     private Editor getEditor(){
         Editor editor = new Editor();

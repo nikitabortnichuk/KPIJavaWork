@@ -14,6 +14,7 @@ import java.time.Month;
 import java.util.*;
 
 import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class AccountAnalyticsTest {
 
@@ -129,16 +130,11 @@ public class AccountAnalyticsTest {
         assertEquals(account.getBalance(), balance);
     }
 
-    @Test
+    @Test(expected = EntityNotFoundException.class)
     public void testGetBalanceByEmailThrowsException() {
         String fakeEmail = "fake@mail.com";
-        try {
-            analytics.getBalanceByEmail(fakeEmail);
-            fail("Should throw exception");
-        } catch (Exception e) {
-            assertTrue(e instanceof EntityNotFoundException);
-            assertEquals(String.format("Cannot find Account by email=%s", fakeEmail), e.getMessage());
-        }
+        analytics.getBalanceByEmail(fakeEmail);
+        fail("Should throw exception");
     }
 
     @Test

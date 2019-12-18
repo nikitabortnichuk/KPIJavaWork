@@ -16,4 +16,13 @@ public abstract class Extra implements Order{
     public String getName() {
         return order.getName() + ", " + this.name;
     }
+
+    @Override
+    public String toString() {
+        return "Extra{" +
+                "order=" + order +
+                ", price=" + price +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

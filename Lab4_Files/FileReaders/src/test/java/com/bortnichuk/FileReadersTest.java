@@ -14,7 +14,6 @@ public class FileReadersTest {
         String fileContent = FileReaders.readWholeFile("empty.txt");
 
         assertEquals("", fileContent);
-
     }
 
     @Test
