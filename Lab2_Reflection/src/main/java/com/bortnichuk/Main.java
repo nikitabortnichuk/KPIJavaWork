@@ -11,18 +11,14 @@ public class Main {
         Window windowImpl1 = new Window(2, 5, 4, 3, "red");
         Window windowImpl2 = new Window(6, 3, 7, 2, "blue");
 
-//        logger.trace(windowImpl1);
-//        logger.trace(windowImpl2);
+        System.out.println(windowImpl1);
+        System.out.println(windowImpl2);
 
         TextWindow textWindow1 = new TextWindow("Happy new year!", "white");
         TextWindow textWindow2 = new TextWindow("Happy birthday!", "black");
 
-//        logger.trace(textWindow1.getText());
-//        logger.trace(textWindow2.getText());
-
-//        windowImpl1.changeColor("yellow");
-//        logger.trace(windowImpl1);
-
+        windowImpl1.changeColor("yellow");
+        System.out.println(windowImpl1);
 
     }
 

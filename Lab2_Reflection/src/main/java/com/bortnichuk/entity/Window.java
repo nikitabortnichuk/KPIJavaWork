@@ -26,6 +26,11 @@ public class Window implements IWindow {
     }
 
     @MyAnnotation
+    public void changeColorToBlue(){
+        color = "blue";
+    }
+
+    @MyAnnotation
     public void changeColorToRed(){
         color = "red";
     }

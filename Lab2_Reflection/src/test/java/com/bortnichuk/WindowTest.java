@@ -5,6 +5,7 @@ import com.bortnichuk.entity.IWindow;
 import com.bortnichuk.entity.MyInvocationHandler;
 import com.bortnichuk.entity.TextWindow;
 import com.bortnichuk.entity.Window;
+import com.bortnichuk.exception.SetterCalledException;
 import lombok.SneakyThrows;
 import org.junit.Test;
 
@@ -62,7 +63,7 @@ public class WindowTest {
 
         int actual = windowImpl.getClass().getDeclaredMethods().length;
 
-        assertEquals(17, actual);
+        assertEquals(18, actual);
 
     }
 
@@ -87,7 +88,7 @@ public class WindowTest {
         String color = windowProxy.getColor();
         System.out.println(color);
 
-        assertThrows(SecurityException.class, () -> windowProxy.setColor("blue"));
+        assertThrows(SetterCalledException.class, () -> windowProxy.setColor("blue"));
     }
 
     private String getParameters(Method method) {
