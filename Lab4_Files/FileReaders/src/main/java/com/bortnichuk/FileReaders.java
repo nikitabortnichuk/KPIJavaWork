@@ -33,7 +33,6 @@ public class FileReaders {
         } catch (IOException e) {
             throw new FileStatsException("Cannot read file");
         }
-
     }
 
     private static Path getPath(String filePath) {

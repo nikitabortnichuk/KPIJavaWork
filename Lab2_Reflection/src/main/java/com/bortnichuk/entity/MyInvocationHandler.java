@@ -1,5 +1,7 @@
 package com.bortnichuk.entity;
 
+import com.bortnichuk.exception.SetterCalledException;
+
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 
@@ -14,7 +16,7 @@ public class MyInvocationHandler implements InvocationHandler {
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         if(method.getName().startsWith("set")){
-            throw new SecurityException("Setter was called");
+            throw new SetterCalledException();
         }
 
         return method.invoke(object, args);
